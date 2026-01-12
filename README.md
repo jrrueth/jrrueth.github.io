@@ -1,6 +1,6 @@
 # jrrueth.github.io
-Personal Website
+# Personal Website
 
-This is an online resume. 
+# This is an online resume. 
 
-Possible blog coming soon.
+# Possible blog coming soon.
