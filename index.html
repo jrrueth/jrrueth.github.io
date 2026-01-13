@@ -227,7 +227,7 @@
             <div class="navigation">
                 <a href="#" style="text-align: center" class="nav-button" onclick="showPage('dogs'); return false;">Dogs I Like</a>
                 <a href="#" style="text-align: center" class="nav-button" onclick="showPage('fish'); return false;">Fish I've Caught</a>
-                <a href="#" style="text-align: center" class="nav-button" onclick="showPage('consideration'); return false;">For your consideration</a>
+                <a href="#" style="text-align: center" class="nav-button" onclick="showPage('song'); return false;">Meaning of Life</a>
                 <a href="#" style="text-align: center" class="nav-button" onclick="showPage('outsiders'); return false;">The Outsiders</a>
             </div>
         </div>
@@ -278,14 +278,14 @@
             </div>
         </div>
 
-        <div id="consideration-page" class="page">
+        <div id="song-page" class="page">
             <button class="back-button" onclick="showPage('home')">← Back to Home</button>
-            <h2>For your consideration</h2>
+            <h2>Meaning of Life</h2>
             <div class="video-container">
                 <!-- Replace VIDEO_ID with your YouTube video ID -->
                 <!-- Example: if URL is https://www.youtube.com/watch?v=dQw4w9WgXcQ, use dQw4w9WgXcQ -->
                 <iframe 
-                    src="https://www.youtube.com/watch?v=1_xwnb3cymc" 
+                    src="https://www.youtube.com/embed/1_xwnb3cymc" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                     allowfullscreen>
                 </iframe>
@@ -311,13 +311,13 @@
             const homePage = document.getElementById('home-page');
             const dogsPage = document.getElementById('dogs-page');
             const fishPage = document.getElementById('fish-page');
-            const considerationPage = document.getElementById('consideration-page');
+            const considerationPage = document.getElementById('song-page');
             const outsidersPage = document.getElementById('outsiders-page');
 
             homePage.style.display = 'none';
             dogsPage.classList.remove('active');
             fishPage.classList.remove('active');
-            considerationPage.classList.remove('active');
+            songPage.classList.remove('active');
             outsidersPage.classList.remove('active');
 
             if (page === 'home') {
@@ -326,7 +326,7 @@
                 dogsPage.classList.add('active');
             } else if (page === 'fish') {
                 fishPage.classList.add('active');
-            } else if (page === 'consideration') {
+            } else if (page === 'song') {
                 considerationPage.classList.add('active');
             } else if (page === 'outsiders') {
                 outsidersPage.classList.add('active');
