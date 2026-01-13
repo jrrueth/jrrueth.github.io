@@ -163,6 +163,34 @@
             display: block;
         }
 
+        .gallery-item p {
+            padding: 15px;
+            text-align: center;
+            color: #555;
+            font-size: 0.9em;
+            background: #f8f9fa;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 8px;
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2em;
@@ -189,12 +217,18 @@
                     <span>📱 <a href="tel:+13123301740">+1 (312) 330-1740</a></span>
                     <span>📍 Chicago, IL</span>
                 </div>
-                <p class="education">B.S. Electrical Engineering   University of Illinois Urbana-Champaign</p>
+                <p class="education">
+                    <strong>B.S. Electrical Engineering</strong><br>
+                    University of Illinois Urbana-Champaign<br>
+                    I-L-L
+                </p>
             </header>
 
             <div class="navigation">
-                <a href="#" style = "text-align: center" class="nav-button" onclick="showPage('dogs'); return false;">Dogs I Like</a>
-                <a href="#" style = "text-align: center" class="nav-button" onclick="showPage('fish'); return false;">Fish I've Caught</a>
+                <a href="#" style="text-align: center" class="nav-button" onclick="showPage('dogs'); return false;">Dogs I Like</a>
+                <a href="#" style="text-align: center" class="nav-button" onclick="showPage('fish'); return false;">Fish I've Caught</a>
+                <a href="#" style="text-align: center" class="nav-button" onclick="showPage('consideration'); return false;">For your consideration</a>
+                <a href="#" style="text-align: center" class="nav-button" onclick="showPage('outsiders'); return false;">The Outsiders</a>
             </div>
         </div>
 
@@ -202,21 +236,22 @@
             <button class="back-button" onclick="showPage('home')">← Back to Home</button>
             <h2>Dogs I Like</h2>
             <div class="gallery">
-                <!-- Replace the src paths below with your actual image paths -->
-                <!-- Example: dogs/dog1.jpg, dogs/dog2.jpg, etc. -->
                 <div class="gallery-item">
                     <img src="dogpics/IMG_3445.jpeg" alt="Dog 1">
+                    <!-- <p>Caption for Dog 1</p> -->
                 </div>
                 <div class="gallery-item">
                     <img src="dogpics/dog2.jpeg" alt="Dog 2">
+                    <!-- <p>Caption for Dog 2</p> -->
                 </div>
                 <div class="gallery-item">
                     <img src="dogpics/dog3.jpeg" alt="Dog 3">
+                    <!-- <p>Caption for Dog 3</p> -->
                 </div>
                 <div class="gallery-item">
                     <img src="dogpics/dog4.jpeg" alt="Dog 4">
+                    <!-- <p>Caption for Dog 4</p> -->
                 </div>
-                <!-- Add more gallery items as needed -->
             </div>
         </div>
 
@@ -224,21 +259,49 @@
             <button class="back-button" onclick="showPage('home')">← Back to Home</button>
             <h2>Fish I've Caught</h2>
             <div class="gallery">
-                <!-- Replace the src paths below with your actual image paths -->
-                <!-- Example: fish/fish1.jpg, fish/fish2.jpg, etc. -->
                 <div class="gallery-item">
                     <img src="fishpics/fish1.jpeg" alt="Fish 1">
+                    <!-- <p>Caption for Fish 1</p> -->
                 </div>
                 <div class="gallery-item">
                     <img src="fishpics/fish2.jpeg" alt="Fish 2">
+                    <!-- <p>Caption for Fish 2</p> -->
                 </div>
                 <div class="gallery-item">
                     <img src="fishpics/fish3.jpeg" alt="Fish 3">
+                    <!-- <p>Caption for Fish 3</p> -->
                 </div>
                 <div class="gallery-item">
                     <img src="fishpics/fish4.jpeg" alt="Fish 4">
+                    <!-- <p>Caption for Fish 4</p> -->
                 </div>
-                <!-- Add more gallery items as needed -->
+            </div>
+        </div>
+
+        <div id="consideration-page" class="page">
+            <button class="back-button" onclick="showPage('home')">← Back to Home</button>
+            <h2>For your consideration</h2>
+            <div class="video-container">
+                <!-- Replace VIDEO_ID with your YouTube video ID -->
+                <!-- Example: if URL is https://www.youtube.com/watch?v=dQw4w9WgXcQ, use dQw4w9WgXcQ -->
+                <iframe 
+                    src="https://www.youtube.com/embed/VIDEO_ID" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+        <div id="outsiders-page" class="page">
+            <button class="back-button" onclick="showPage('home')">← Back to Home</button>
+            <h2>The Outsiders</h2>
+            <div class="video-container">
+                <!-- Replace with the path to your video file in the repository -->
+                <!-- Example: videos/outsiders.mp4 -->
+                <video controls>
+                    <source src="videos/outsiders.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
             </div>
         </div>
     </div>
@@ -248,10 +311,14 @@
             const homePage = document.getElementById('home-page');
             const dogsPage = document.getElementById('dogs-page');
             const fishPage = document.getElementById('fish-page');
+            const considerationPage = document.getElementById('consideration-page');
+            const outsidersPage = document.getElementById('outsiders-page');
 
             homePage.style.display = 'none';
             dogsPage.classList.remove('active');
             fishPage.classList.remove('active');
+            considerationPage.classList.remove('active');
+            outsidersPage.classList.remove('active');
 
             if (page === 'home') {
                 homePage.style.display = 'block';
@@ -259,13 +326,12 @@
                 dogsPage.classList.add('active');
             } else if (page === 'fish') {
                 fishPage.classList.add('active');
+            } else if (page === 'consideration') {
+                considerationPage.classList.add('active');
+            } else if (page === 'outsiders') {
+                outsidersPage.classList.add('active');
             }
         }
     </script>
 </body>
 </html>
-
-
-
-
-
